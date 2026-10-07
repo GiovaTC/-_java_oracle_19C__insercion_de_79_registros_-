@@ -21,5 +21,5 @@ public class ConexionOracle {
                 USUARIO,
                 PASSWORD
         );
-    }   
+    }
 }

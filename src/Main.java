@@ -1,15 +1,63 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import config.ConexionOracle;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        String sql = "{call INSERTAR_REGISTRO(?, ?)}";
+
+        try (Connection conexion = ConexionOracle.conectar();
+             CallableStatement procedimiento =
+                     conexion.prepareCall(sql)) {
+
+            System.out.println("======================================");
+            System.out.println(" JAVA + ORACLE 19C ");
+            System.out.println(" INSERTANDO 79 REGISTROS ");
+            System.out.println("======================================");
+            System.out.println();
+
+            for (int i = 1;i <=79; i++) {
+
+                String nombre = "Registro " + i;
+                int edad = 20 + (i % 40);
+
+                procedimiento.setString(1, nombre);
+                procedimiento.setInt(2, edad);
+                procedimiento.execute();
+
+                System.out.println(
+                        "Registro " + i +
+                                " insertado correctamente -> " +
+                                nombre +
+                                " | Edad: " + edad
+                );
+            }
+
+            System.out.println();
+
+            System.out.println("======================================");
+            System.out.println(" PROCESO FINALIZADO");
+            System.out.println("======================================");
+
+            consultarRegistros(conexion);
+
+        } catch (Exception e) {
+
+            System.out.println();
+
+            System.out.println(
+                    "ERROR AL EJECUTAR EL PROCESO:"
+            );
+
+            e.printStackTrace();
         }
+    }
+
+    private static void consultarRegistros(Connection conexion) {   
     }
 }
