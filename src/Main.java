@@ -58,6 +58,36 @@ public class Main {
         }
     }
 
-    private static void consultarRegistros(Connection conexion) {   
+    private static void consultarRegistros(Connection conexion) {
+
+        String sql = """
+                SELECT COUNT(*) AS TOTAL
+                FROM REGISTROS_79
+                """;
+
+        try (Statement statement = conexion.createStatement();
+
+             ResultSet resultado =
+                     statement.executeQuery(sql)) {
+
+            if (resultado.next()) {
+
+                int total =
+                        resultado.getInt("TOTAL");
+
+                System.out.println();
+
+                System.out.println(
+                        "Total de registros en Oracle: "
+                                + total
+                );
+            }
+        } catch (Exception e) {
+
+            System.out.println(
+                    "Error al consultar los registros."
+            );
+            e.printStackTrace();
+        }
     }
 }
