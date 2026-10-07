@@ -1,7 +1,9 @@
 # -_java_oracle_19C__insercion_de_79_registros_- :.
 # Java + Oracle 19c - Inserción de 79 Registros:
 
-<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/29f6b930-01b4-47d5-a08f-ef533c4f5f3f" />  
+<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/29f6b930-01b4-47d5-a08f-ef533c4f5f3f" />
+
+<img width="2554" height="1077" alt="image" src="https://github.com/user-attachments/assets/b476297a-e0f8-49b3-85db-cd00d16291da" />    
 
 ```
 
